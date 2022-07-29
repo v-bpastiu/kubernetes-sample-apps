@@ -18,7 +18,7 @@ spec:
       containers:
         - name: backend
           # Replace the `<>` placeholders with your docker registry info
-          image: registry.digitalocean.com/<YOUR_DOCKER_REGISTRY_NAME_HERE>/2048-game:latest
+          image: registry.digitalocean.com/sample-apps/2048-game:latest
           ports:
             - name: http
               containerPort: 8080
@@ -29,10 +29,10 @@ spec:
             limits:
               cpu: 200m
               memory: 100Mi
-          # securityContext:
-          #   readOnlyRootFilesystem: true
-          #   runAsNonRoot: true
-          #   allowPrivilegeEscalation: false
-          #   capabilities:
-          #     drop:
-          #       - all
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - all
